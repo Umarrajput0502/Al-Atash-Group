@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!--=============== REMIXICONS ===============-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!--=============== CSS ===============-->
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="icon" href="AL-Atash Group icon.jpg" type="image/gif" />
+    <!-- <link rel="stylesheet" href="home.css"> -->
+    <style>
+        /* @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap'); */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            width: 100%;
+            height: 100vh;
+            /* font-size: 62.5%; */
+            font-family: Arial, sans-serif;
+
+            text-align: center;
+        }
+
+        :root {
+            --header-height: 3.5rem;
+
+            /*========== Colors ==========*/
+            /*Color mode HSL(hue, saturation, lightness)*/
+            --black-color: hsl(220, 24%, 12%);
+            --black-color-light: hsl(220, 24%, 15%);
+            --black-color-lighten: hsl(220, 20%, 18%);
+            --white-color: #fff;
+            --body-color: hsl(220, 100%, 97%);
+            --gradient: linear-gradient(45deg, black, blue, rgb(35, 182, 223), white);
+
+            /*========== Font and typography ==========*/
+            /*.5rem = 8px | 1rem = 16px ...*/
+            --body-font: "Montserrat", sans-serif;
+            --normal-font-size: .938rem;
+
+            /*========== Font weight ==========*/
+            --font-regular: 400;
+            --font-semi-bold: 600;
+
+            /*========== z index ==========*/
+            --z-tooltip: 10;
+            --z-fixed: 100;
+        }
+
+        /*========== Responsive typography ==========*/
+        @media screen and (min-width: 1024px) {
+            :root {
+                --normal-font-size: 1rem;
+            }
+        }
+
+        /*=============== BASE ===============*/
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            font-size: var(--normal-font-size);
+            background-color: white;
+            max-width: 100%;
+
+
+        }
+
+        ul {
+            list-style: none;
+            /* Color highlighting when pressed on mobile devices */
+            /*-webkit-tap-highlight-color: transparent;*/
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /*=============== REUSABLE CSS CLASSES ===============*/
+        .container {
+            max-width: 1120px;
+            margin-inline: 1.5rem;
+        }
+
+        /* Ayat */
+        .ayat-body {
+            height: 50px;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .quote-container {
+            position: relative;
+            height: 50px;
+            overflow: hidden;
+            width: 99%;
+            background-color: white;
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .quote {
+            font-size: 1.5rem;
+            height: 40px;
+            position: absolute;
+            width: 100%;
+            top: 100%;
+            transition: top 0.5s ease-in-out;
+        }
+
+
+        .quote.active {
+            top: 0;
+        }
+
+        .quote.inactive {
+            top: -100%;
+        }
+
+        /*=============== HEADER ===============*/
+        .header {
+
+            width: 97%;
+            background-color: white;
+            
+            z-index: 0;
+            margin-top: -0.5vh;
+            border-bottom: 1px solid rgb(174, 173, 173);
+        }
+
+        /*=============== NAV ===============*/
+        .nav {
+            height: var(--header-height);
+            z-index: 0;
+        }
+
+        .nav__link:hover {
+            transform: scale(1.15);
+
+
+        }
+
+        .nav__logo,
+        .nav__burger,
+        .nav__close {
+            color: var(--white-color);
+        }
+
+        .nav__data {
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav__logo {
+            display: inline-flex;
+            align-items: center;
+            column-gap: .25rem;
+            font-weight: var(--font-semi-bold);
+
+            /* Color highlighting when pressed on mobile devices */
+            /*-webkit-tap-highlight-color: transparent;*/
+        }
+
+        .nav__logo i {
+            font-weight: initial;
+            font-size: 1.25rem;
+        }
+
+        .logo {
+            height: 10px;
+            width: 10px;
+        }
+
+        .nav__toggle {
+            position: relative;
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav__burger,
+        .nav__close {
+            position: absolute;
+            width: max-content;
+            height: max-content;
+            inset: 0;
+            margin: auto;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: opacity .1s, transform .4s;
+        }
+
+        .nav__close {
+            opacity: 0;
+        }
+
+        /* Navigation for mobile devices */
+        @media screen and (max-width: 1118px) {
+            .nav__menu {
+                position: absolute;
+                left: 0;
+                top: 2.5rem;
+                width: 100%;
+                height: calc(100vh - 3.5rem);
+                overflow: auto;
+                pointer-events: none;
+                opacity: 0;
+                transition: top .4s, opacity .3s;
+            }
+
+            .nav__menu::-webkit-scrollbar {
+                width: 0;
+            }
+
+            .nav__list {
+                background-color: #0F111B;
+                padding-top: 1rem;
+            }
+        }
+
+        .nav__link {
+            color: #0F111B;
+            /* background-color: white; */
+            font-weight: var(--font-semi-bold);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color .3s;
+        }
+
+        .nav__link:hover {
+            background-color: #0F111B;
+        }
+
+        /* Show menu */
+        .show-menu {
+            opacity: 1;
+            top: 3.5rem;
+            pointer-events: initial;
+        }
+
+        /* Show icon */
+        .show-icon .nav__burger {
+            opacity: 0;
+            transform: rotate(90deg);
+        }
+
+        .show-icon .nav__close {
+            opacity: 1;
+            transform: rotate(90deg);
+        }
+
+        /*=============== DROPDOWN ===============*/
+        .dropdown__item {
+            cursor: pointer;
+
+        }
+
+        .dropdown__arrow {
+            font-size: 1.25rem;
+            font-weight: initial;
+            transition: transform .4s;
+        }
+
+        .dropdown__link,
+        .dropdown__sublink {
+            padding: 1.25rem 1.25rem 1.25rem 2.5rem;
+            color: #0F111B;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            column-gap: .5rem;
+            font-weight: var(--font-semi-bold);
+            transition: background-color .3s;
+            height: 30px;
+            border-bottom: 1px solid gray;
+            z-index: 10;
+        }
+
+        .dropdown__link i,
+        .dropdown__sublink i {
+            font-size: 1.25rem;
+            font-weight: initial;
+        }
+
+        .dropdown__link:hover,
+        .dropdown__sublink:hover {
+            background-color: #0F111B;
+            color: white;
+            opacity: 1;
+
+        }
+
+        .dropdown__menu,
+        .dropdown__submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s ease-out;
+            z-index: 10;
+        }
+
+        /* Show dropdown menu & submenu */
+        .dropdown__item:hover .dropdown__menu,
+        .dropdown__subitem:hover>.dropdown__submenu {
+            max-height: 1000px;
+            transition: max-height .4s ease-in;
+        }
+
+        /* Rotate dropdown icon */
+        .dropdown__item:hover .dropdown__arrow {
+            transform: rotate(180deg);
+        }
+
+        /*=============== DROPDOWN SUBMENU ===============*/
+        .dropdown__add {
+            margin-left: auto;
+        }
+
+        /* .dropdown__sublink {
+            background-color:white;
+        } */
+
+        /*=============== BREAKPOINTS ===============*/
+        /* For small devices */
+        @media screen and (max-width: 340px) {
+            .container {
+                margin-inline: 1rem;
+            }
+
+            .nav__link {
+                padding-inline: 1rem;
+            }
+        }
+
+        /* For large devices */
+        @media screen and (min-width: 1118px) {
+            .container {
+                margin-inline: auto;
+            }
+
+            .nav {
+                height: calc(var(--header-height) + 2rem);
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .nav__toggle {
+                display: none;
+            }
+
+            .nav__list {
+                height: 100%;
+                display: flex;
+                column-gap: 3rem;
+            }
+
+            .nav__link {
+                height: 100%;
+                padding: 0;
+                justify-content: initial;
+                column-gap: .25rem;
+            }
+
+            .nav__link:hover {
+                background-color: transparent;
+            }
+
+            .dropdown__item,
+            .dropdown__subitem {
+                position: relative;
+            }
+
+            .dropdown__menu,
+            .dropdown__submenu {
+                max-height: initial;
+                overflow: initial;
+                position: absolute;
+                left: 0;
+                top: 6rem;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity .3s, top .3s;
+            }
+
+            .dropdown__link,
+            .dropdown__sublink {
+                padding-inline: 1rem 3.5rem;
+            }
+
+            .dropdown__subitem .dropdown__link {
+                padding-inline: 1rem;
+            }
+
+            .dropdown__submenu {
+                position: absolute;
+                left: 100%;
+                top: .5rem;
+            }
+
+            /* Show dropdown menu */
+            .dropdown__item:hover .dropdown__menu {
+                opacity: 1;
+                top: 5.5rem;
+                pointer-events: initial;
+                transition: top .3s;
+            }
+
+            /* Show dropdown submenu */
+            .dropdown__subitem:hover>.dropdown__submenu {
+                opacity: 1;
+                top: 0;
+                pointer-events: initial;
+                transition: top .3s;
+            }
+        }
+
+        .navbar-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin-top: 20px;
+            height: 50px;
+            border: 1px solid #0F111B;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+            left: 150px;
+
+
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .signup {
+            background-color: #0F111B;
+            color: #fff;
+            margin-right: 2px;
+        }
+
+        .signup:hover {
+            background-color: #3C7EC1;
+        }
+
+        .login {
+            background-color: #0F111B;
+            color: #fff;
+            margin-right: 5vw;
+        }
+
+        .login:hover {
+            background-color: #3C7EC1;
+        }
+
+        .box {
+            height: 30px;
+            display: flex;
+            margin-top: 30px;
+            cursor: pointer;
+            width: 0px;
+            padding: 0px 10px;
+            background: none;
+            border-radius: 30px;
+            align-items: center;
+
+        }
+
+        .box:hover input {
+            width: 200px;
+        }
+
+        .box input {
+            width: 0;
+            outline: none;
+            border: none;
+            font-weight: 500;
+            transition: width 0.8s ease;
+            background: transparent;
+        }
+
+        .box a .fa {
+            color: #0F111B;
+            font-size: 18px;
+        }
+
+
+
+
+
+        .blog-container {
+            margin: 0px 40px;
+        }
+
+        .blog-div--1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            height: 15rem;
+        }
+
+        .main-heading {
+            margin-top: 2rem;
+            font-size: 3rem;
+            font-family: dancing script, Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .image-div--1 {
+
+            flex: 1;
+            height: 200px;
+          
+            border-radius: 1rem;
+
+        }
+
+        .image-div--1 img {
+            width: 500px;
+            height: 300px;
+            /* object-fit: cover; */
+            border-radius: 1rem;
+        }
+
+        .content-div--1 {
+            font-size: 1rem;
+            flex: 2;
+            height: 90%;
+            padding: 1rem;
+
+            & h1 {
+                margin-bottom: 15px;
+                font-size: 1.5rem;
+                font-weight: 600;
+                text-align: left;
+                text-transform: capitalize;
+            }
+
+            & p {
+                text-align: left;
+            }
+        }
+
+        .card {
+            max-width: 250px;
+            margin-top: 1rem;
+            transition: all .25s linear;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+
+            &:hover {
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+               transform: translateY(-10px);
+            }
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .card-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* footer  */
+        footer {
+            background-color: #0F111B;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+
+        .footer-container {
+            flex-wrap: wrap;
+            display: inline-flexbox;
+            justify-content: space-evenly;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            word-spacing: 1x;
+
+        }
+
+        .address {
+            margin: 10px;
+            text-align: center;
+            justify-content: space-evenly;
+            align-items: center;
+
+
+        }
+
+        .address h4 {
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .address,
+            .social-icons {
+                margin: 10px 0;
+            }
+        }
+
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            right: 60px;
+
+        }
+
+        .wrapper h3 p {
+            margin: 0.5rem 0;
+
+        }
+
+        .wrapper h3 {
+            margin-left: 55px;
+
+        }
+
+        .un {
+            padding-top: 25px;
+            margin-right: 350px;
+        }
+
+        .uan p {
+            position: relative;
+            top: -19px;
+            left: -50px;
+        }
+
+        .header1 {
+            display: inline-block;
+            justify-content: space-around;
+            align-items: center;
+
+
+
+        }
+
+        .header1 p {
+            font-size: 10px;
+        }
+
+        .icon {
+            text-decoration: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 14px;
+            /* background-color: hsla(209 20% 70% / 20%); */
+            /* For dark theme */
+            background-color: #3589CB;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+                rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+        }
+
+        .icon>i {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.2s;
+        }
+
+        .icon:hover>i {
+            scale: 1.2;
+            color: #f1f1f1;
+        }
+
+        .icon:before {
+            background: var(--color);
+            content: "";
+            position: absolute;
+            width: 130%;
+            height: 130%;
+            left: -110%;
+            top: 80%;
+            transform: rotate(45deg);
+        }
+
+        .icon:hover:before {
+            animation: slide 0.7s forwards;
+        }
+
+        .Email {
+            color: white;
+        }
+
+        .Email:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes slide {
+            50% {
+                left: 10%;
+                top: -40%;
+            }
+
+            100% {
+                left: -15%;
+                top: -15%;
+            }
+        }
+
+        .icon:has(.fa-instagram) {
+            --color: linear-gradient(45deg, #f9ce34, #ee2a7b, #6228d7);
+        }
+
+        .icon:has(.fa-linkedin-in) {
+            --color: #0077b5;
+        }
+
+        .icon:has(.fa-youtube) {
+            --color: #ff0000;
+        }
+
+        .icon:has(.fa-x-twitter) {
+            --color: #1da1f2;
+        }
+
+        .icon:has(.fa-github) {
+            --color: #333;
+        }
+
+        .icon:has(.fa-tiktok) {
+            --color: black;
+        }
+
+        .icon:has(.fa-pinterest) {
+            --color: #E60023;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ayat-body">
+        <div class="quote-container">
+            <div class="quote" id="arbi" style="padding-top: 10px;">
+                مَن يُطِعِ ٱللَّهَ وَرَسُولَهُ ۥ يُدۡخِلۡهُ جَنَّـٰتٍ۬ تَجۡرِى مِن تَحۡتِهَا
+                ٱلۡأَنۡهَـٰرُ خَـٰلِدِينَ فِيهَا‌ۚ</div>
+            <div class="quote" id="urdu" style=" font-size:1.4rem; padding-top: 10px;">
+                جو کوئی اللہ اور اس کے رسول کی اطاعت کرے گا اللہ اسے ایسے باغوں میں داخل کرے
+                گا جن کے نیچے نہریں بہتی ہوں گی اور ان میں ہمیشہ رہیں گے۔</div>
+        </div>
+    </div>
+    <!--=============== HEADER ===============-->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__data">
+                <a href="#" class="nav__logo">
+                    <img src="al atash logo.png" alt="" height="70px">
+                </a>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line nav__burger"></i>
+                    <i class="ri-close-line nav__close"></i>
+                </div>
+            </div>
+
+            <!--=============== NAV MENU ===============-->
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link">Home</a></li>
+
+                    <li><a href="about.html" class="nav__link">About</a></li>
+
+                    <!--=============== DROPDOWN 1 ===============-->
+                    <li class="dropdown__item">
+                        <div class="nav__link">
+                            Services <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        </div>
+
+                        <ul class="dropdown__menu">
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-pie-chart-line"></i>  -->
+                                    Real Estate
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i>  -->
+                                    Architecture
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i> -->
+                                    Estimation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i>  -->
+                                    Construction
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i>  -->
+                                    Land Survey
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i> -->
+                                    Safety and Security
+                                </a>
+                            </li>
+
+                            <!--=============== DROPDOWN SUBMENU ===============-->
+                            <li class="dropdown__subitem">
+                                <div class="dropdown__link">
+                                    <!-- <i class="ri-bar-chart-line"></i> -->
+                                    MEP
+                                    <i class="ri-add-line dropdown__add"></i>
+                                </div>
+
+                                <ul class="dropdown__submenu">
+                                    <li>
+                                        <a href="#" class="dropdown__sublink">
+                                            <!-- <i class="ri-file-list-line"></i> -->
+                                            Mechanical
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#" class="dropdown__sublink">
+                                            <!-- <i class="ri-cash-line"></i>  -->
+                                            Electrical
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" class="dropdown__sublink">
+                                            <!-- <i class="ri-refund-2-line"></i> -->
+                                            Plumbing
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i>  -->
+                                    Socail Media Marketing
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i>  -->
+                                    Transport
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i> -->
+                                    Buildgenices
+                                </a>
+                            </li>
+                    </li>
+                </ul>
+                </li>
+
+                <li><a href="blog.html" class="nav__link">Blog</a></li>
+
+
+
+                <li><a href="contact-us.html" class="nav__link">Contact</a></li>
+                </ul>
+
+            </div>
+            <div class="box">
+                <input type="text" placeholder="search">
+                <a href="">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="navbar-buttons">
+                <button class="btn signup">Sign Up</button>
+                <button class="btn login">Log In</button>
+            </div>
+        </nav>
+    </header>
+    <div class="blog-container">
+        <h1 class="main-heading" data-aos="flip-down">
+            LATEST BLOGS
+        </h1>
+        <div class="blog-div--1" data-aos="fade-right">
+            <div class="image-div--1">
+                <img src="im/Blog/blog main.jpg" alt="">
+            </div>
+            <div class="content-div--1">
+                <h1>your most unhappy customers are the greatest source of learning</h1>
+                <p>Transforming dreams into reality, Alatash Group of Companies invites you to dive into the world of
+                    innovation! With our expertise in multiple types of fields and with that experienc we can give the
+                    services you want.</p>
+            </div>
+        </div>
+        <div class="card-section" data-aos="fade-up">
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-section" data-aos="fade-right">
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-section" data-aos="fade-up">
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-section" data-aos="fade-down">
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://picsum.photos/id/237/800/600" alt="Card image">
+                <div class="card-content">
+                    <div class="card-title">Card Title</div>
+                    <div class="card-text">This is a description of the card content. It can be a few lines long and
+                        should be descriptive enough to convey the message.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer data-aos="fade-down">
+        <div class="footer-container">
+            <div class="address">
+
+                <h2>Rawalpindi</h2>
+                <p>Flat # 201, 2nd Floor, Shahbaz Plaza, Near Street # 06, Gulshan E Abad, Adyala Road</p>
+                <a href="tel:+92 3105072012" class="Email">+92 3105072012</a>
+            </div>
+
+
+            <div class="address">
+
+                <h2>Lahore</h2>
+                <p>Office # 09, 4th Floor, Big City Plaza, Liberty Chowk, Hafeez Kardar Rd, Gulberg III</p>
+                <a href="tel:+92 3317148072" class="Email">+92 3317148072</a>
+            </div>
+
+            <div class="address">
+
+                <h2>Karachi</h2>
+                <p>House # 151, Ground Floor, Phase 2, Gulshan Hadeed</p>
+                <a href="tel:+92 3317148072" class="Email">+92 3317148072</a>
+            </div>
+            <div class="wrapper">
+                <div class="uan">
+                    <h3 class="un">UAN:</h3>
+                    <p><a href="tel:+92 311 115 5572" class="Email">+92 311 115 5572</a></p>
+                </div>
+                <div class="links">
+                    <a href="https://www.instagram.com/alatashgroup?igsh=MXRxMG1uam5yNTI3eA%3D%3D" class="icon"
+                        target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/alatashgroup/?originalSubdomain=pk" class="icon"
+                        target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="icon" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="icon" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.facebook.com/AAGroup.Pak?mibextid=qi2Omg&rdid=PzVTegCu58UpFLcl&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Ff8EE5HcpmsT3ANdK%2F%3Fmibextid%3Dqi2Omg"
+                        class="icon" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.pinterest.com/alatashgroup/?invite_code=fd91ac41e96e44d1aa89bea4a7671804&sender=948781983906082757"
+                        class="icon" target="_blank"><i class="fa-brands fa-pinterest"></i></a>
+                </div>
+                <h3>Email:</h3>
+                <p><a href="mailto:alatashgroup@gmail.com" class="Email">alatashgroup@gmail.com</a></p>
+
+                <!-- <a href="#" class="icon"><i class="fa-brands fa-github"></i></a> -->
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="home.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            delay: 500,
+            offset: 150,
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const quotes = document.querySelectorAll('.quote');
+            let currentQuote = 0;
+
+            function changeQuote() {
+                quotes[currentQuote].classList.remove('active');
+                quotes[currentQuote].classList.add('inactive');
+
+                currentQuote = (currentQuote + 1) % quotes.length;
+
+                quotes[currentQuote].classList.remove('inactive');
+                quotes[currentQuote].classList.add('active');
+            }
+
+            quotes[currentQuote].classList.add('active');
+            setInterval(changeQuote, 3000);
+        });
+    </script>
+
+</body>
+
+</html>

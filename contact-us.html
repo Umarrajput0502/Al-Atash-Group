@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="home.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            /* line-height: 1.6; */
+            background:white;
+            color: #0F111B;
+        }
+
+        /* Header Styles */
+    .h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            height: 100px;
+            width: 100%;
+            background-color: #0F111B;
+            color: white;
+            padding-top: 20px;
+            border-radius: 10px;
+        }
+
+     .h1 {
+            font-size: 2.5em;
+            color: #fffefe;
+            animation: fadeIn 1s ease-in-out;
+        }
+     .h1:hover{
+            transform: scaleY(1.1);
+            transition: transform 1s ease;
+        }
+
+        /* Contact Info Section */
+        .contact-info,
+        .contact-details {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-info h2,
+        .contact-details h3 {
+            font-size: 2em;
+            color: #fefcfc;
+            animation: slideInFromLeft 1s ease-out;
+        }
+
+        .contact-info p,
+        .contact-details p {
+            font-size: 1.2em;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Contact Details Section */
+        .contact-details {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .contact-details .detail {
+            width: 30%;
+            min-width: 250px;
+            background: #0F111B;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: bounceIn 1s ease-out;
+            transition: .5s ease-in-out;
+        }
+
+        .detail:hover {
+            transform: translateY(-20px);
+        }
+        .detail h3:hover{
+            color: #3589CB;
+        }
+        .mail{
+            margin-top: 30px;
+        }
+
+        .contact-details a {
+            color: #fdfcfc;
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Form Section */
+        .contact-form {
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: slideInFromRight 1s ease-out;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .center{
+            padding: 200px;
+        }
+
+        button {
+            display: inline-block;
+            background: #0F111B;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background: #3589CB;
+            transform: translateY(-2px);
+        }
+
+        .para{
+            opacity: 1;
+            animation: slideInFromRight 1s ease-out;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                transform: translateX(-100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                transform: translateX(100%);
+            }
+
+            to {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+
+            .contact-info h2 {
+                font-size: 1.5em;
+            }
+
+            form {
+                padding: 15px;
+            }
+
+            button {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .contact-details .detail {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <div class="ayat-body">
+        <div class="quote-container">
+            <div class="quote" id="1" style = "padding-top: 10px;">
+                مَن يُطِعِ ٱللَّهَ وَرَسُولَهُ ۥ يُدۡخِلۡهُ جَنَّـٰتٍ۬ تَجۡرِى مِن تَحۡتِهَا
+                ٱلۡأَنۡهَـٰرُ خَـٰلِدِينَ فِيهَا‌ۚ</div>
+            <div class="quote" id="2" style = " font-size:25px; padding-top: 10px;">
+                جو کوئی اللہ اور اس کے رسول کی اطاعت کرے گا اللہ اسے ایسے باغوں میں داخل کرے
+                        گا جن کے نیچے نہریں بہتی ہوں گی اور ان میں ہمیشہ رہیں گے۔</div>
+        </div>
+    </div>
+    <!--=============== HEADER ===============-->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__data">
+                <a href="#" class="nav__logo">
+                    <img src="al atash logo.png" alt="" height="70px">
+                </a>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-menu-line nav__burger"></i>
+                    <i class="ri-close-line nav__close"></i>
+                </div>
+            </div>
+
+            <!--=============== NAV MENU ===============-->
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li><a href="index.html" class="nav__link">Home</a></li>
+
+                    <li><a href="about.html" class="nav__link">About</a></li>
+
+                    <!--=============== DROPDOWN 1 ===============-->
+                    <li class="dropdown__item">
+                        <div class="nav__link">
+                            Services <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        </div>
+
+                        <ul class="dropdown__menu">
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-pie-chart-line"></i>  -->
+                                    Real Estate
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i>  -->
+                                    Architecture
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i> -->
+                                    Estimation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i>  -->
+                                    Construction
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i>  -->
+                                    Land Survey
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i> -->
+                                    Safety and Security
+                                </a>
+                            </li>
+
+                            <!--=============== DROPDOWN SUBMENU ===============-->
+                            <li class="dropdown__subitem">
+                                <div class="dropdown__link">
+                                    <!-- <i class="ri-bar-chart-line"></i> -->
+                                    MEP
+                                    <i class="ri-add-line dropdown__add"></i>
+                                </div>
+
+                                <ul class="dropdown__submenu">
+                                    <li>
+                                        <a href="#" class="dropdown__sublink">
+                                            <!-- <i class="ri-file-list-line"></i> -->
+                                            Mechanical
+                                        </a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="#" class="dropdown__sublink">
+                                            <!-- <i class="ri-cash-line"></i>  -->
+                                            Electrical
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" class="dropdown__sublink">
+                                            <!-- <i class="ri-refund-2-line"></i> -->
+                                            Plumbing
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i>  -->
+                                    Socail Media Marketing
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i>  -->
+                                    Transport
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dropdown__link">
+                                    <!-- <i class="ri-arrow-up-down-line"></i> -->
+                                    Buildgenices
+                                </a>
+                            </li>
+                    </li>
+                </ul>
+                </li>
+
+                <li><a href="blog.html" class="nav__link">Blog</a></li>
+
+
+
+                <li><a href="contact-us.html" class="nav__link">Contact</a></li>
+                </ul>
+
+            </div>
+            <div class="box">
+                <input type="text" placeholder="search">
+                <a href="">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="navbar-buttons">
+                <button class="btn signup">Sign Up</button>
+                <button class="btn login">Log In</button>
+            </div>
+        </nav>
+    </header>
+   <!-- contact us -->
+        <h1 class="h1">Contact Us</h1>
+ 
+    
+    <main>
+        <section class="contact-info animate">
+          
+           
+        </section>
+        <section class="contact-details animate">
+            <div class="detail">
+                <h3>Head Office</h3>
+                <p>Flat # 201, 2nd Floor, Shahbaz Plaza, Near Street # 06, Gulshan E Abad, Adyala Road,Rawalpindi</p>
+            </div>
+            <div class="detail" style="padding-top: 40px;">
+                <h3>Call Us At</h3>
+                <p><a  href="tel:+92 311 115 5572" >+92 311 115 5572</a></p>
+            </div>
+            <div class="detail" style="padding-top: 40px;">
+                <h3>Email Us At</h3>
+                <p><a href="mailto:alatashgroup@gmail.com">alatashgroup@gmail.com</a></p>
+            </div>
+        </section>
+        <section class="contact-form animate">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            
+            </form>
+        </section>
+    </main>
+   <!-- footer -->
+   <footer>
+    <div class="footer-container">
+        <div class="address">
+            
+            <h2>Rawalpindi</h2>
+            <p>Flat # 201, 2nd Floor, Shahbaz Plaza, Near Street # 06, Gulshan E Abad, Adyala Road</p>
+            <a href="tel:+92 3105072012" class="Email">+92 3105072012</a>
+        </div>
+        <div class="address">
+            
+            <h2>Lahore</h2>
+            <p>Office # 09, 4th Floor, Big City Plaza, Liberty Chowk, Hafeez Kardar Rd, Gulberg III</p>
+            <a href="tel:+92 3317148072" class="Email">+92 3317148072</a>
+        </div>
+        <div class="address">
+
+            <h2>Karachi</h2>
+            <p>House # 151, Ground Floor, Phase 2, Gulshan Hadeed</p>
+            <a href="tel:+92 3317148072" class="Email">+92 3317148072</a>
+        </div>
+        <div class="wrapper">
+            <div class="uan">
+            <h3 class="un">UAN:</h3>
+            <p><a href="tel:+92 311 115 5572" class="Email">+92 311 115 5572</a></p></div>
+            <div class="links">
+            <a href="https://www.instagram.com/alatashgroup?igsh=MXRxMG1uam5yNTI3eA%3D%3D" class="icon" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="icon"target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#" class="icon"target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="icon"target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.facebook.com/AAGroup.Pak?mibextid=qi2Omg&rdid=PzVTegCu58UpFLcl&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2Ff8EE5HcpmsT3ANdK%2F%3Fmibextid%3Dqi2Omg" class="icon"target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.pinterest.com/alatashgroup/?invite_code=fd91ac41e96e44d1aa89bea4a7671804&sender=948781983906082757" class="icon"target="_blank"><i class="fa-brands fa-pinterest"></i></a>
+        </div>
+            <h3>Email:</h3>
+            <p><a href="mailto:alatashgroup@gmail.com" class="Email">alatashgroup@gmail.com</a></p>
+
+            <!-- <a href="#" class="icon"><i class="fa-brands fa-github"></i></a> -->
+        </div>
+    </div>
+</footer>
+    <script>
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Simple form validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                alert('Form submitted successfully!');
+                this.reset(); // Reset form fields
+            } else {
+                alert('Please fill out all fields.');
+            }
+        });
+
+        // Scroll-triggered animations
+        window.addEventListener('scroll', function () {
+            const elements = document.querySelectorAll('.animate');
+            const scrollPosition = window.scrollY + window.innerHeight * 0.75;
+
+            elements.forEach(function (element) {
+                const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+
+                if (scrollPosition >= elementPosition) {
+                    element.classList.add('in-view');
+                }
+            });
+        });
+
+    </script>
+    <script src="home.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const quotes = document.querySelectorAll('.quote');
+            let currentQuote = 0;
+
+            function changeQuote() {
+                quotes[currentQuote].classList.remove('active');
+                quotes[currentQuote].classList.add('inactive');
+
+                currentQuote = (currentQuote + 1) % quotes.length;
+
+                quotes[currentQuote].classList.remove('inactive');
+                quotes[currentQuote].classList.add('active');
+            }
+
+            quotes[currentQuote].classList.add('active');
+            setInterval(changeQuote, 3000);
+        });
+
+
+    </script>
+</body>
+
+</html>
